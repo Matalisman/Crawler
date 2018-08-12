@@ -1,92 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.IOException;
 import java.net.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.net.URL;
 
-/**
- * Created by Mateusz
- */
-public class WebReader implements  Runnable {
-
-    private ObiektCrawlera obiekt;
-    private String slowoKluczowe;
+public class WebReader {
+    PageContentProvider pageContentProvider;
+    ContentChecker pageContentChecker;
+    String pageContent;
     
-
-    WebReader(ObiektCrawlera obiekt, String slowoKluczowe) {
-        this.obiekt = obiekt;
-        this.slowoKluczowe = slowoKluczowe;
+    WebReader() {
+       pageContentProvider = new PageContentProvider();
+       pageContentChecker = new ContentChecker();
     }
 
-    /**
-     *
-     * @return
-     */
-    
-    public ArrayList<ObiektCrawlera> read() {
-       String content = null;
-           
-        System.out.println("Funkcja read())");
-        ArrayList<ObiektCrawlera> wynikLinkow = new ArrayList();
-        
-            content = this.readSource();
-       
-        
-            String[] linki = null;
-            String regex = "((https?|http?):((//)|(.))+[\\w\\d:#@%/;$()~_?\\+-=\\\\\\.&]*)|((www.)+[\\w\\d:#@%/;$()~_?\\+-=\\\\\\.&]*)";
-            String regexKeyWord = slowoKluczowe ;
-        try {
-            
-            linki = content.split("=\"|\\s+|>|\"|'");
-            
-                       
-            for (int i=0; i<linki.length; i++) {
-            
-                if (linki[i].matches(regex)) { // matches uses regex
-                System.out.println("Match " + linki[i]);
-                wynikLinkow.add(new ObiektCrawlera(linki[i]));
-                }
-            
-            }}  catch(NullPointerException e){}
-        
-        SaveResults zapisz = new SaveResults(wynikLinkow);
-        zapisz.saveToFile();
-       
-        return wynikLinkow;
+    public boolean checkIfGivenPageHasGivenValue(
+        String urlLineFromCsV,
+        String checkAgainst
+    ) {
+          try {
+            URL url = new URL(urlLineFromCsV);
+            pageContent = pageContentProvider.readPageContent(url);
+        } catch (MalformedURLException e) {
+            System.out.println("Wrong url");
+            System.out.println(e.getMessage());
         }
-
-    String readSource() {
-        String content = null;
-        Scanner scanner = null;
-        try {
-            URL url = new URL(obiekt.getNazwa());
-            scanner = new Scanner(url.openStream());
-            }
-        catch (Exception e) {
-            System.out.println("Can not read URL");
-            e.printStackTrace();
-            }
-            
-        
-        while(scanner.hasNext())
-            {    
-            content += scanner.nextLine();
-            }
-        
-        return content;    
+          
+        System.out.println(checkAgainst);
+    return 
+        pageContentChecker.checkIfContentHasGivenValues(
+            pageContent,
+            checkAgainst
+        );
     }
-
-    @Override
-    public void run() {
-        this.read();
-    }
+    
+//    private  getUrl(String urlLineFromCsV)
+//    {
+//        try {
+//            System.out.println("checkIfGivenPageHasGivenValue");
+//            System.out.println(urlLineFromCsV + " 1");
+//            URL url = new URL(urlLineFromCsV);
+//            System.out.println("po utworzeniu urla");
+//            return url;
+//        } catch (MalformedURLException e) {
+//            System.out.println("Wrong url");
+//            System.out.println(e.getMessage());
+//        }
+//    }
 }

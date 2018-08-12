@@ -28,70 +28,63 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="accept" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="jScrollPane3" min="-2" pref="295" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                      <Component id="history" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="tekst" min="-2" pref="191" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <Component id="openFileButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+              <Component id="runAnalisys" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="94" max="32767" attributes="0"/>
+              <Component id="saveFileButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-              <Component id="tekst" min="-2" pref="34" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="accept" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" min="-2" pref="383" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
-                      <Component id="history" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="openFileButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="saveFileButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="runAnalisys" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="88" max="32767" attributes="0"/>
+              <EmptySpace pref="359" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="tekst">
+    <Component class="javax.swing.JButton" name="openFileButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="kot"/>
+        <Property name="text" type="java.lang.String" value="Open File"/>
+        <Property name="actionCommand" type="java.lang.String" value="openFile"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="accept">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Szukaj s&#x142;owa kluczowego"/>
-      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="openFile"/>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+      </AccessibilityProperties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="acceptActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openFile"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="output">
-        </Component>
-      </SubComponents>
-    </Container>
-    <Component class="javax.swing.JButton" name="history">
+    <Component class="javax.swing.JButton" name="saveFileButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Poka&#x17c; linki ze s&#x142;owem kluczowym"/>
+        <Property name="text" type="java.lang.String" value="Save file"/>
+        <Property name="actionCommand" type="java.lang.String" value="saveFile"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="historyActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveFile"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="runAnalisys">
+      <Properties>
+        <Property name="actionCommand" type="java.lang.String" value="runAnalisys"/>
+        <Property name="label" type="java.lang.String" value="Run Analisys"/>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="runAnalisys"/>
+      </AccessibilityProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="runAnalisys"/>
       </Events>
     </Component>
   </SubComponents>
